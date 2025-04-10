@@ -1,0 +1,45 @@
+package com.ecommerce.main;
+import com.ecommerce.payment.*;
+
+import java.util.Scanner;
+
+public class MainApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter payment type (BankTransfer, Ewallet, CreditCard): ");
+        String paymentType = scanner.nextLine();
+
+        System.out.print("Enter account name: ");
+        String accountName = scanner.nextLine();
+
+        System.out.print("Enter account ID: ");
+        String accountId = scanner.nextLine();
+
+        System.out.print("Enter amount to pay: ");
+        double amount = scanner.nextDouble();
+
+        PaymentMethod paymentMethod;
+
+        switch (paymentType) {
+            case "BankTransfer":
+                paymentMethod = new BankTransfer();
+                break;
+            case "Ewallet":
+                paymentMethod = new Ewallet();
+                break;
+            case "CreditCard":
+                paymentMethod = new CreditCard();
+                break;
+            default:
+                System.out.println("Invalid payment type.");
+                return;
+        }
+
+        paymentMethod.accountName = accountName;
+        paymentMethod.accountId = accountId;
+
+        paymentMethod.validateAccount();
+        paymentMethod.processPayment(amount);
+    }
+}
