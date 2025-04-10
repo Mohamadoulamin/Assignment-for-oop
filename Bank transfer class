@@ -1,0 +1,15 @@
+package com.ecommerce.payment;
+public class BankTransfer extends PaymentMethod {
+    @Override
+    public void validateAccount() {
+        if (accountId.startsWith("BT-")) {
+            System.out.println("Bank account validated for: " + accountName);
+        } else {
+            System.out.println("Invalid bank account ID format.");
+        }
+    }
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing Bank Transfer payment of $" + amount + " for account: " + accountName);
+    }
+}
