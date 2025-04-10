@@ -1,0 +1,6 @@
+package com.ecommerce.payment;
+public abstract class PaymentMethod implements Payable {
+    protected String accountName;
+    protected String accountId;
+    public abstract void validateAccount();
+}
