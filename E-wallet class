@@ -1,0 +1,17 @@
+package com.ecommerce.payment;
+public class Ewallet extends PaymentMethod {
+
+    @Override
+    public void validateAccount() {
+        if (accountId.startsWith("EW-")) {
+            System.out.println("E-Wallet account validated for: " + accountName);
+        } else {
+            System.out.println("Invalid E-Wallet account ID format.");
+        }
+    }
+
+    @Override
+    public void processPayment(double amount) {
+        System.out.println("Processing E-Wallet payment of $" + amount + " for account: " + accountName);
+    }
+}
